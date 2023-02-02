@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     float playerSpeed;
 
     Animator anim;
+    [SerializeField] private SphereCollider attackCollider;
 
     int numberOfClicks = 0;
 
@@ -116,6 +117,7 @@ public class PlayerController : MonoBehaviour
             case MovementStates.Dash:
                 Invoke("DashLater", 0.1f);
                 anim.SetBool("dashing", true);
+                attackCollider.enabled = false;
                 break;
             case MovementStates.Attack:
                 OnClickAttack();
@@ -296,7 +298,13 @@ public class PlayerController : MonoBehaviour
 
 
     }
+    public void SetAttackCollider(bool value)
+    {
+        if (playerState == MovementStates.Dash)
+            return;
 
+        attackCollider.enabled = value;
+    }
     private void OnEnable()
     {
         AnimationEventController.onAnimationEvent += CheckCombo;
