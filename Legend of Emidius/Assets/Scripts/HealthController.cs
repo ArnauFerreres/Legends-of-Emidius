@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthController : MonoBehaviour
 {
-    public enum characterType { Player, Enemy01}
+    public enum characterType { Player, Enemy01 }
 
     [Header("Health Settings")]
     public characterType currentCharacterType = characterType.Player;
@@ -24,7 +24,7 @@ public class HealthController : MonoBehaviour
 
         currentHealth -= damage;
 
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             currentHealth = 0;
 
@@ -34,11 +34,11 @@ public class HealthController : MonoBehaviour
                 return;
             }
 
-            if(currentCharacterType == characterType.Enemy01)
+            if (currentCharacterType == characterType.Enemy01)
             {
                 Destroy(gameObject);
             }
-                
+
         }
     }
 

@@ -8,24 +8,24 @@ public class CheckDamageController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(isPlayer)
+        if (isPlayer)
         {
             if (other.tag == "Enemy")
-            { 
+            {
                 //Debug.Log("Attacking Enemy");
-                TakeDamage(other.gameObject,10,other.tag);
+                TakeDamage(other.gameObject, 10, other.tag);
             }
         }
         else
         {
-            if(other.tag == "Player")
+            if (other.tag == "Player")
             {
-                //Debug.Log("Attacking player");
-                TakeDamage(other.gameObject, 10, other.tag);
+                if (other.gameObject.GetComponentInParent<PlayerController>().playerState != PlayerController.MovementStates.Dash)
+                    TakeDamage(other.gameObject, 10, other.tag);
 
             }
         }
-    }   
+    }
 
     private void TakeDamage(GameObject entity, int damage, string tag)
     {

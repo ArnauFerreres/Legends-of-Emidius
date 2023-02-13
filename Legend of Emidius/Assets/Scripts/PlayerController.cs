@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
         Initial, OnGround, OnAir, Jumping, DoubleJumping, Dash, Attack, Dance
     }
 
-    private MovementStates playerState;
+    public MovementStates playerState { get; set; }
 
     [Header("General Settings")]
     [SerializeField] private float speedMove = 4f;
@@ -33,9 +33,10 @@ public class PlayerController : MonoBehaviour
     float playerSpeed;
 
     Animator anim;
-    [SerializeField] private SphereCollider attackCollider;
 
     int numberOfClicks = 0;
+
+    [SerializeField] private SphereCollider attackCollider;
 
     void Start()
     {
@@ -58,9 +59,9 @@ public class PlayerController : MonoBehaviour
 
 
 #if UNITY_EDITOR
-        if(Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.O))
         {
-            if(Cursor.lockState == CursorLockMode.Locked)
+            if (Cursor.lockState == CursorLockMode.Locked)
                 Cursor.lockState = CursorLockMode.None;
             else
                 Cursor.lockState = CursorLockMode.Locked;
@@ -93,7 +94,7 @@ public class PlayerController : MonoBehaviour
             case MovementStates.Attack:
                 break;
             case MovementStates.Dance:
-                anim.SetBool("dance",false);
+                anim.SetBool("dance", false);
                 break;
         }
 
@@ -112,7 +113,7 @@ public class PlayerController : MonoBehaviour
                 break;
             case MovementStates.DoubleJumping:
                 verticalVelocity.y = jumpForce;
-                anim.SetBool("doubleJumping",true);
+                anim.SetBool("doubleJumping", true);
                 break;
             case MovementStates.Dash:
                 Invoke("DashLater", 0.1f);
@@ -137,20 +138,20 @@ public class PlayerController : MonoBehaviour
         {
             case MovementStates.Initial:
                 PlayerMovement();
-                if(charControl.isGrounded)
+                if (charControl.isGrounded)
                     ChangeState(MovementStates.OnGround);
                 break;
             case MovementStates.OnGround:
                 PlayerMovement();
-                if(Input.GetButtonDown("Jump"))
+                if (Input.GetButtonDown("Jump"))
                     ChangeState(MovementStates.Jumping);
                 if (!charControl.isGrounded)
                     ChangeState(MovementStates.OnAir);
                 if (Input.GetButtonDown("Fire3"))
                     ChangeState(MovementStates.Dash);
-                if(Input.GetButtonDown("Fire1"))
+                if (Input.GetButtonDown("Fire1"))
                     ChangeState(MovementStates.Attack);
-                if(Input.GetKey(KeyCode.B))
+                if (Input.GetKey(KeyCode.B))
                     ChangeState(MovementStates.Dance);
                 break;
             case MovementStates.OnAir:
@@ -191,25 +192,25 @@ public class PlayerController : MonoBehaviour
     {
         moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 
-        if(moveDirection.magnitude >= 0.1f)
+        if (moveDirection.magnitude >= 0.1f)
         {
-            float targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.z)*Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
+            float targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref smoothRotationVelocity, 0.1f);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            charControl.Move(moveDir.normalized*speedMove*Time.deltaTime);
+            charControl.Move(moveDir.normalized * speedMove * Time.deltaTime);
 
-            if(playerSpeed < 1)
-                playerSpeed += acceleration *Time.deltaTime;
+            if (playerSpeed < 1)
+                playerSpeed += acceleration * Time.deltaTime;
             else
-                playerSpeed =1;
+                playerSpeed = 1;
         }
         else
         {
-            if(playerSpeed > 0)
-                playerSpeed -= deceleration *Time.deltaTime;
+            if (playerSpeed > 0)
+                playerSpeed -= deceleration * Time.deltaTime;
             else
-                playerSpeed =0;
+                playerSpeed = 0;
         }
         ConstantGravity();
 
@@ -221,9 +222,9 @@ public class PlayerController : MonoBehaviour
     private void ConstantGravity()
     {
         verticalVelocity.y += gravity * Time.deltaTime;
-        charControl.Move(verticalVelocity *Time.deltaTime);
+        charControl.Move(verticalVelocity * Time.deltaTime);
 
-        if(charControl.isGrounded && verticalVelocity.y < 0)
+        if (charControl.isGrounded && verticalVelocity.y < 0)
         {
             verticalVelocity.y = -5f;
         }
@@ -244,10 +245,10 @@ public class PlayerController : MonoBehaviour
         if (moveDirection.magnitude < 0.1f)
             moveDash = transform.forward;
         else
-            transform.rotation =Quaternion.Euler(0f, targetAngle, 0f);
-        while(Time.time < startTime +dashDuration)
+            transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+        while (Time.time < startTime + dashDuration)
         {
-            charControl.Move(moveDash.normalized * dashForce*Time.deltaTime);
+            charControl.Move(moveDash.normalized * dashForce * Time.deltaTime);
             ConstantGravity();
             yield return null;
         }
@@ -268,14 +269,14 @@ public class PlayerController : MonoBehaviour
         if (playerState == MovementStates.Dash)
             return;
 
-        if(numberOfClicks == 1 && anim.GetCurrentAnimatorStateInfo(0).IsName("attack_1"))
+        if (numberOfClicks == 1 && anim.GetCurrentAnimatorStateInfo(0).IsName("attack_1"))
         {
             anim.SetInteger("attack", 0);
             numberOfClicks = 0;
             ChangeState(MovementStates.OnGround);
         }
 
-        if(numberOfClicks >= 2 && anim.GetCurrentAnimatorStateInfo(0).IsName("attack_1"))
+        if (numberOfClicks >= 2 && anim.GetCurrentAnimatorStateInfo(0).IsName("attack_1"))
         {
             anim.SetInteger("attack", 2);
         }
@@ -298,6 +299,7 @@ public class PlayerController : MonoBehaviour
 
 
     }
+
     public void SetAttackCollider(bool value)
     {
         if (playerState == MovementStates.Dash)
