@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthController : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class HealthController : MonoBehaviour
     [Header("Health Settings")]
     public characterType currentCharacterType = characterType.Player;
     public bool friendlyFire = false;
+    [SerializeField] private Image hpBar;
 
     [Header("Stats Settings")]
     [SerializeField] private int maxHealth;
@@ -23,6 +25,11 @@ public class HealthController : MonoBehaviour
             return;
 
         currentHealth -= damage;
+
+        if(hpBar != null)
+        {
+            HPBarUpdate();
+        }
 
         if (currentHealth <= 0)
         {
@@ -41,5 +48,8 @@ public class HealthController : MonoBehaviour
 
         }
     }
-
+    public void HPBarUpdate()
+    {
+        hpBar.fillAmount = (float)currentHealth / maxHealth;
+    }
 }

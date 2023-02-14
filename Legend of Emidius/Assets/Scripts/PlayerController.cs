@@ -317,4 +317,9 @@ public class PlayerController : MonoBehaviour
         AnimationEventController.onAnimationEvent -= CheckCombo;
 
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<iTakeItem>() != null)
+            other.GetComponent<iTakeItem>().TakeItem();
+    }
 }
