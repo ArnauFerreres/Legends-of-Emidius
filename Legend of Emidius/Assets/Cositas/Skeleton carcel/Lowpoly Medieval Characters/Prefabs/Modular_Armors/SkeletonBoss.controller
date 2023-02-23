@@ -242,8 +242,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02225a851a48a4c47a5797a0710f8633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startAttack: 0.35
-  endAttack: 0.7
+  startAttack: 0.1
+  endAttack: 0.4
   isPlayer: 0
 --- !u!1101 &-2305428431662730093
 AnimatorStateTransition:
@@ -485,8 +485,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02225a851a48a4c47a5797a0710f8633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startAttack: 0.35
-  endAttack: 0.7
+  startAttack: 0.1
+  endAttack: 0.4
   isPlayer: 0
 --- !u!1101 &2545592718335409488
 AnimatorStateTransition:
@@ -618,8 +618,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02225a851a48a4c47a5797a0710f8633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startAttack: 0.35
-  endAttack: 0.7
+  startAttack: 0.1
+  endAttack: 0.4
   isPlayer: 0
 --- !u!1101 &3961339996956619172
 AnimatorStateTransition:
