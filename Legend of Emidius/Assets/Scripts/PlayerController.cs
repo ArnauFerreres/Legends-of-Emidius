@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public enum MovementStates
     {
-        Initial, OnGround, OnAir, Jumping, DoubleJumping, Dash, Attack, Dance
+        Initial, OnGround, OnAir, Jumping, DoubleJumping, Dash, Attack, Dance, Death
     }
 
     public MovementStates playerState { get; set; }
@@ -21,6 +21,10 @@ public class PlayerController : MonoBehaviour
     Vector3 moveDir;
     float smoothRotationVelocity;
 
+    private CharacterController controller;
+
+
+    HealthController healthController;
 
     Vector3 verticalVelocity;
 
@@ -48,12 +52,19 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         anim = GetComponentInChildren<Animator>();
+
+        controller = GetComponent<CharacterController>();
     }
 
     void Update()
     {
         StateUpdate();
 
+        if(anim.GetBool("dead") == true) 
+        {
+            transform.rotation = Quaternion.identity;
+            controller.enabled= false;
+        }
 
 
 
@@ -96,6 +107,9 @@ public class PlayerController : MonoBehaviour
             case MovementStates.Dance:
                 anim.SetBool("dance", false);
                 break;
+            case MovementStates.Death:
+                anim.SetBool("dead", false);
+                break;
         }
 
         //incoming triggering condition
@@ -127,6 +141,9 @@ public class PlayerController : MonoBehaviour
                 break;
             case MovementStates.Dance:
                 anim.SetBool("dance", true);
+                break;
+            case MovementStates.Death:
+                anim.SetBool("dead", true);
                 break;
         }
 
@@ -185,6 +202,9 @@ public class PlayerController : MonoBehaviour
                 if (Input.GetKey(KeyCode.W))
                     ChangeState(MovementStates.OnGround);
                 break;
+            case MovementStates.Death:
+                Dead();
+                break;
         }
     }
 
@@ -229,6 +249,11 @@ public class PlayerController : MonoBehaviour
             verticalVelocity.y = -5f;
         }
 
+    }
+
+    public void Dead()
+    {
+        controller.enabled= false;
     }
     private void DashLater()
     {
@@ -307,6 +332,7 @@ public class PlayerController : MonoBehaviour
 
         attackCollider.enabled = value;
     }
+
     private void OnEnable()
     {
         AnimationEventController.onAnimationEvent += CheckCombo;
