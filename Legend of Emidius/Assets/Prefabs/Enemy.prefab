@@ -520,7 +520,7 @@ Transform:
   - {fileID: 8060348454331345374}
   - {fileID: 8060348455123882316}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8060348453888335478
 GameObject:
@@ -3619,6 +3619,8 @@ MonoBehaviour:
   friendlyFire: 0
   hpBar: {fileID: 116038946584453316}
   maxHealth: 30
+  currentHealth: 0
+  isBoss: 0
 --- !u!114 &8060348455123882315
 MonoBehaviour:
   m_ObjectHideFlags: 0
