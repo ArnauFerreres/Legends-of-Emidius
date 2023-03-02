@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -42,6 +43,14 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private SphereCollider attackCollider;
 
+    [Header("Stamina Settings")]
+    [SerializeField] private float maxStamina = 100;
+    float currentStamina;
+
+    [SerializeField] private float staminaReg = 5f;
+
+    [SerializeField] private Image StaminaBar;
+
     void Start()
     {
         playerState = MovementStates.Initial;
@@ -54,20 +63,28 @@ public class PlayerController : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
 
         controller = GetComponent<CharacterController>();
+
+        currentStamina = maxStamina;
     }
 
     void Update()
     {
         StateUpdate();
 
-        if(anim.GetBool("dead") == true) 
+        if (currentStamina < maxStamina)
+        {
+            RegenerateStamina();
+        }
+
+        float finalLife = (float)currentStamina / maxStamina;
+
+        StaminaBar.fillAmount = Mathf.MoveTowards(StaminaBar.fillAmount, finalLife, 1f * Time.deltaTime);
+
+        if (anim.GetBool("dead") == true) 
         {
             transform.rotation = Quaternion.identity;
             controller.enabled= false;
         }
-
-
-
 
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.O))
@@ -160,14 +177,23 @@ public class PlayerController : MonoBehaviour
                 break;
             case MovementStates.OnGround:
                 PlayerMovement();
-                if (Input.GetButtonDown("Jump"))
-                    ChangeState(MovementStates.Jumping);
-                if (!charControl.isGrounded)
-                    ChangeState(MovementStates.OnAir);
-                if (Input.GetButtonDown("Fire3"))
-                    ChangeState(MovementStates.Dash);
-                if (Input.GetButtonDown("Fire1"))
-                    ChangeState(MovementStates.Attack);
+                if (currentStamina > 0)
+                {
+                    if (Input.GetButtonDown("Jump"))
+                    {
+                        currentStamina -= 10;
+                        ChangeState(MovementStates.Jumping);
+                    }
+                    if (Input.GetButtonDown("Fire3"))
+                    {
+                        currentStamina -= 10;
+                        ChangeState(MovementStates.Dash);
+                    }
+                    if (Input.GetButtonDown("Fire1"))
+                    {
+                        ChangeState(MovementStates.Attack);
+                    }
+                }
                 if (Input.GetKey(KeyCode.B))
                     ChangeState(MovementStates.Dance);
                 break;
@@ -175,15 +201,27 @@ public class PlayerController : MonoBehaviour
                 PlayerMovement();
                 if (charControl.isGrounded)
                     ChangeState(MovementStates.OnGround);
-                if (Input.GetButtonDown("Jump"))
-                    ChangeState(MovementStates.DoubleJumping);
+                if (currentStamina > 0)
+                {
+                    if (Input.GetButtonDown("Jump"))
+                    {
+                        currentStamina -= 10;
+                        ChangeState(MovementStates.DoubleJumping);
+                    }
+                }
                 break;
             case MovementStates.Jumping:
                 PlayerMovement();
                 if (charControl.isGrounded)
                     ChangeState(MovementStates.OnGround);
-                if (Input.GetButtonDown("Jump"))
-                    ChangeState(MovementStates.DoubleJumping);
+                if (currentStamina > 0)
+                {
+                    if (Input.GetButtonDown("Jump"))
+                    {
+                        currentStamina -= 10;
+                        ChangeState(MovementStates.DoubleJumping);
+                    }
+                }
                 break;
             case MovementStates.DoubleJumping:
                 PlayerMovement();
@@ -193,10 +231,19 @@ public class PlayerController : MonoBehaviour
             case MovementStates.Dash:
                 break;
             case MovementStates.Attack:
-                if (Input.GetButtonDown("Fire1"))
-                    OnClickAttack();
-                if (Input.GetButtonDown("Fire3"))
-                    ChangeState(MovementStates.Dash);
+                if (currentStamina > 0)
+                {
+                    if (Input.GetButtonDown("Fire1"))
+                    {
+                        OnClickAttack();
+                    }
+
+                    if (Input.GetButtonDown("Fire3"))
+                    {
+                        currentStamina -= 10;
+                        ChangeState(MovementStates.Dash);
+                    }
+                }
                 break;
             case MovementStates.Dance:
                 if (Input.GetKey(KeyCode.W))
@@ -296,6 +343,7 @@ public class PlayerController : MonoBehaviour
 
         if (numberOfClicks == 1 && anim.GetCurrentAnimatorStateInfo(0).IsName("attack_1"))
         {
+            currentStamina -= 10;   
             anim.SetInteger("attack", 0);
             numberOfClicks = 0;
             ChangeState(MovementStates.OnGround);
@@ -303,26 +351,32 @@ public class PlayerController : MonoBehaviour
 
         if (numberOfClicks >= 2 && anim.GetCurrentAnimatorStateInfo(0).IsName("attack_1"))
         {
+            currentStamina -= 10;
             anim.SetInteger("attack", 2);
         }
         if (numberOfClicks == 2 && anim.GetCurrentAnimatorStateInfo(0).IsName("attack_2"))
         {
+            currentStamina -= 10;
             anim.SetInteger("attack", 0);
             numberOfClicks = 0;
             ChangeState(MovementStates.OnGround);
         }
         if (numberOfClicks == 3 && anim.GetCurrentAnimatorStateInfo(0).IsName("attack_2"))
         {
+            currentStamina -= 10;
             anim.SetInteger("attack", 3);
         }
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("attack_3"))
         {
+            currentStamina -= 10;
             anim.SetInteger("attack", 0);
             numberOfClicks = 0;
             ChangeState(MovementStates.OnGround);
         }
-
-
+    }
+    private void RegenerateStamina()
+    {
+        currentStamina += staminaReg * Time.deltaTime;
     }
 
     public void SetAttackCollider(bool value)
