@@ -10,10 +10,12 @@ namespace SG
     {
         public TextMeshProUGUI bossName;
         public Slider slider;
+        public AudioClip bossMusic;
 
         private void Awake()
         {
             slider = GetComponentInChildren<Slider>();
+            GetComponent<AudioSource>().clip = bossMusic;
             //bossName = GetComponentInChildren<TextMeshProUGUI>();
         }
         private void Start()
@@ -49,6 +51,14 @@ namespace SG
         public void SetBossCurrentHealthBar(int currentHealth)
         {
             slider.value = currentHealth;
+        }
+        public void SetMusicBossToActive()
+        {
+            GetComponent<AudioSource>().Play();
+        }
+        public void SetMusicBossToInactive()
+        {
+            GetComponent<AudioSource>().Stop();
         }
     }
 }

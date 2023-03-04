@@ -301,6 +301,7 @@ public class PlayerController : MonoBehaviour
     public void Dead()
     {
         controller.enabled= false;
+        controller.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
     private void DashLater()
     {

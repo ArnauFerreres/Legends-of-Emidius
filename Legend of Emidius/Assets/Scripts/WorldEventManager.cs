@@ -10,10 +10,17 @@ namespace SG
         public UIBossHealtBar bossHealtBar;
         public EnemyBossManager boss;
 
+
+        //public TextFade bossHealthBarFade;
+
         public bool bossFightIsActive; // Is correctly fighting boss
         public bool bossHasBeenAwakened; // Woke the boss/watched cutscene but died during fight
         public bool bossHasBeenDefeated; // Boss has been defeated
-
+        private void Start()
+        {
+            //GetComponent<AudioSource>().clip = bossMusic;
+            // bossHealthBarFade= GetComponent<TextFade>();
+        }
         private void Awake()
         {
             bossHealtBar = FindObjectOfType<UIBossHealtBar>();
@@ -30,6 +37,7 @@ namespace SG
             bossFightIsActive = true;
             bossHasBeenAwakened= true;
             bossHealtBar.SetUIHealthBarToActive();
+            bossHealtBar.SetMusicBossToActive();
             foreach (var fogWall in fogWalls)
             {
                 fogWall.ActivateFogWall();
@@ -43,6 +51,8 @@ namespace SG
             {
                 fogWall.DeactivateFogWall();
             }
+            //bossHealthBarFade.FadeOut();
+            bossHealtBar.SetMusicBossToInactive();
             Invoke("HPBoss", 3f);
         }
 
