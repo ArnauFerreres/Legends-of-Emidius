@@ -300,8 +300,7 @@ public class PlayerController : MonoBehaviour
 
     public void Dead()
     {
-        controller.enabled= false;
-        controller.transform.rotation = Quaternion.Euler(0, 0, 0);
+        controller.enabled = false;
     }
     private void DashLater()
     {

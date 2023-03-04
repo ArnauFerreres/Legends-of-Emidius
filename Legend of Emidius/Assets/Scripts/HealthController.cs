@@ -68,7 +68,7 @@ public class HealthController : MonoBehaviour
             if (currentCharacterType == characterType.Player)
             {
                 controller.enabled = false;
-                controller.transform.rotation = Quaternion.Euler(0, 0, 0);
+                controller.transform.rotation= Quaternion.identity;
                 animator.SetBool("dead", true);
                 
                 //return;
