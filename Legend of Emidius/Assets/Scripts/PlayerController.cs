@@ -111,9 +111,9 @@ public class PlayerController : MonoBehaviour
                 break;
             case MovementStates.Jumping:
                 break;
-            case MovementStates.DoubleJumping:
-                anim.SetBool("doubleJumping", false);
-                break;
+            //case MovementStates.DoubleJumping:
+            //    anim.SetBool("doubleJumping", false);
+            //    break;
             case MovementStates.Dash:
                 anim.SetBool("dashing", false);
                 anim.SetInteger("attack", 0);
@@ -142,10 +142,10 @@ public class PlayerController : MonoBehaviour
             case MovementStates.Jumping:
                 verticalVelocity.y = jumpForce;
                 break;
-            case MovementStates.DoubleJumping:
-                verticalVelocity.y = jumpForce;
-                anim.SetBool("doubleJumping", true);
-                break;
+            //case MovementStates.DoubleJumping:
+            //    verticalVelocity.y = jumpForce;
+            //    anim.SetBool("doubleJumping", true);
+            //    break;
             case MovementStates.Dash:
                 Invoke("DashLater", 0.1f);
                 anim.SetBool("dashing", true);
@@ -206,7 +206,7 @@ public class PlayerController : MonoBehaviour
                     if (Input.GetButtonDown("Jump"))
                     {
                         currentStamina -= 10;
-                        ChangeState(MovementStates.DoubleJumping);
+                        //ChangeState(MovementStates.DoubleJumping);
                     }
                 }
                 break;
@@ -214,20 +214,21 @@ public class PlayerController : MonoBehaviour
                 PlayerMovement();
                 if (charControl.isGrounded)
                     ChangeState(MovementStates.OnGround);
-                if (currentStamina > 0)
-                {
-                    if (Input.GetButtonDown("Jump"))
-                    {
-                        currentStamina -= 10;
-                        ChangeState(MovementStates.DoubleJumping);
-                    }
-                }
                 break;
-            case MovementStates.DoubleJumping:
-                PlayerMovement();
-                if (charControl.isGrounded)
-                    ChangeState(MovementStates.OnGround);
-                break;
+                //if (currentStamina > 0)
+                //{
+                //    if (Input.GetButtonDown("Jump"))
+                //    {
+                //        currentStamina -= 10;
+                //        //ChangeState(MovementStates.DoubleJumping);
+                //    }
+                //}
+                //break;
+            //case MovementStates.DoubleJumping:
+            //    PlayerMovement();
+            //    if (charControl.isGrounded)
+            //        ChangeState(MovementStates.OnGround);
+            //    break;
             case MovementStates.Dash:
                 break;
             case MovementStates.Attack:
