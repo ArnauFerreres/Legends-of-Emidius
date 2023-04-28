@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/FirstLevel.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/CastilloInterior.unity
+    guid: a60210338f178124c80cb3e672fed3b0
+  - enabled: 1
+    path: Assets/Scenes/CastilloExterior.unity
+    guid: 6c3efb2cb42ddc547b31ff1713efac1a
   m_configObjects: {}
