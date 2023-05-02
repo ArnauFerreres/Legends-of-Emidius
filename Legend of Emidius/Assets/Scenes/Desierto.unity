@@ -87020,7 +87020,7 @@ MonoBehaviour:
   - {fileID: 2395697319823715991}
   - {fileID: 2395697317814855921}
   - {fileID: 2395697319128435643}
-  sightRange: 4
+  sightRange: 6.03
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -87045,7 +87045,7 @@ MonoBehaviour:
   currentCharacterType: 1
   friendlyFire: 0
   hpBar: {fileID: 5728410486442874602}
-  maxHealth: 60
+  maxHealth: 120
   currentHealth: 0
   isBoss: 0
   regenerate: 10
