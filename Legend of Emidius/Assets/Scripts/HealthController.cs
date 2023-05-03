@@ -1,4 +1,5 @@
 using SG;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,11 @@ public class HealthController : MonoBehaviour
     EnemyBossManager enemyBossManager;
     public bool isBoss;
 
+    [Header("Regenerate Settings")]
+    [SerializeField] private int regenerate = 10;
+    public static Action<GameObject> onEnemyDead;
+
+
     private Animator animator;
     private void Awake()
     {
@@ -41,6 +47,13 @@ public class HealthController : MonoBehaviour
         
         controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
+    }
+
+    private void Update()
+    {
+        float finalLife = (float)currentHealth / maxHealth;
+
+        hpBar.fillAmount = Mathf.MoveTowards(hpBar.fillAmount, finalLife, 1f * Time.deltaTime);
     }
     public void TakeDamage(int damage, string tag)
     {
@@ -81,6 +94,15 @@ public class HealthController : MonoBehaviour
 
         }
     }
+
+    public void TakeHealth()
+    {
+        if (currentHealth < maxHealth)
+        {
+            currentHealth += regenerate;
+        }
+    }
+
     public void HPBarUpdate()
     {
         hpBar.fillAmount = (float)currentHealth / maxHealth;

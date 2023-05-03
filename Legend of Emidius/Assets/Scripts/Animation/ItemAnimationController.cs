@@ -25,7 +25,7 @@ public class ItemAnimationController : MonoBehaviour
         if (inverseRotation)
         {
             rotationValue = -1;
-            transform.Rotate(new Vector3(0, degreesPerSecond * rotationValue * Time.deltaTime, 0), Space.World);
+            transform.Rotate(new Vector3(0, degreesPerSecond * rotationValue * Time.unscaledDeltaTime, 0), Space.World);
         }
         else
             rotationValue = 1;
@@ -42,7 +42,7 @@ public class ItemAnimationController : MonoBehaviour
     {
         if (currentItemType == itemType.Generic)
         {
-            transform.Rotate(new Vector3(0, degreesPerSecond * rotationValue * Time.deltaTime, 0), Space.World);
+            transform.Rotate(new Vector3(0, degreesPerSecond * rotationValue * Time.unscaledDeltaTime, 0), Space.World);
         }
         else
         {
@@ -50,14 +50,14 @@ public class ItemAnimationController : MonoBehaviour
             {
                 if (Mathf.Round(Mathf.Abs(transform.localEulerAngles.y)) > 360 - rotationLimit)
                 {
-                    transform.Rotate(new Vector3(0, degreesPerSecond * rotationValue * Time.deltaTime, 0), Space.World);
+                    transform.Rotate(new Vector3(0, degreesPerSecond * rotationValue * Time.unscaledDeltaTime, 0), Space.World);
                 }
             }
             else
             {
                 if (Mathf.Round(Mathf.Abs(transform.localEulerAngles.y)) < rotationLimit)
                 {
-                    transform.Rotate(new Vector3(0, degreesPerSecond * rotationValue * Time.deltaTime, 0), Space.World);
+                    transform.Rotate(new Vector3(0, degreesPerSecond * rotationValue * Time.unscaledDeltaTime, 0), Space.World);
                 }
             }
             return;
