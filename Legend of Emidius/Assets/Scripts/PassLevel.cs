@@ -22,7 +22,7 @@ public class PassLevel : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            SceneManager.LoadScene("CastilloInterior");
+            SceneManager.LoadScene(passLevel);
         }
     }
 }
