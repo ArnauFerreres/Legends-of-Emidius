@@ -10,14 +10,18 @@ public class PassLevel : MonoBehaviour
     public string passLevel;
     public TextMeshProUGUI textProgress;
     public Slider sliderProgress;
+    public Image sliderBack;
+    public Image sliderFront;
     public float currentPercent;
     public Image PanelLoading;
 
     private void Start()
     {
-        //gameObject.SetActive(false);
+
         PanelLoading.enabled = false;
         sliderProgress.enabled = false;
+        sliderBack.enabled = false;
+        sliderFront.enabled = false;
         textProgress.enabled = false;
     }
 
@@ -45,7 +49,10 @@ public class PassLevel : MonoBehaviour
         {
             PanelLoading.enabled = true;
             sliderProgress.enabled = true;
+            sliderBack.enabled = true;
+            sliderFront.enabled = true;
             textProgress.enabled = true;
+
             StartCoroutine(LoadScene(passLevel));
             //SceneManager.LoadScene(passLevel);
         }
