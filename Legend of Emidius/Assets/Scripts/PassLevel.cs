@@ -12,8 +12,8 @@ public class PassLevel : MonoBehaviour
     public Slider sliderProgress;
     public Image sliderBack;
     public Image sliderFront;
-    public float currentPercent;
     public Image PanelLoading;
+    public float currentPercent;
 
     private void Start()
     {
