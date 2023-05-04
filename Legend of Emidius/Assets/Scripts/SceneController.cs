@@ -22,6 +22,10 @@ public class SceneController : MonoBehaviour
     {
         SceneManager.LoadScene(menuScene);
     }
+    public void newgame()
+    {
+        SceneManager.LoadScene("FirstLevel");
+    }
 
     public void exit()
     {
