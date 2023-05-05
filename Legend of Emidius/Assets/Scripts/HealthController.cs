@@ -19,6 +19,7 @@ public class HealthController : MonoBehaviour
     public int currentHealth;
 
     PlayerController playerController;
+    
 
     CharacterController controller;
     EnemyBossManager enemyBossManager;
@@ -33,9 +34,11 @@ public class HealthController : MonoBehaviour
     private void Awake()
     {
         enemyBossManager= GetComponent<EnemyBossManager>();
+        
     }
     void Start()
     {
+        
         if(!isBoss)
         {
             currentHealth = maxHealth;
@@ -47,6 +50,7 @@ public class HealthController : MonoBehaviour
         
         controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
+        playerController = GetComponent<PlayerController>();
     }
 
     private void Update()
@@ -80,11 +84,13 @@ public class HealthController : MonoBehaviour
 
             if (currentCharacterType == characterType.Player)
             {
+               
                 controller.enabled = false;
                 controller.transform.rotation= Quaternion.identity;
                 animator.SetBool("dead", true);
-                
-                //return;
+
+                Invoke("ActivarPanelGO", 1.6f);
+                return;
             }
 
             if (currentCharacterType == characterType.Enemy01)
@@ -106,5 +112,10 @@ public class HealthController : MonoBehaviour
     public void HPBarUpdate()
     {
         hpBar.fillAmount = (float)currentHealth / maxHealth;
+    }
+
+    void ActivarPanelGO()
+    {
+        playerController.GameOverPanel();
     }
 }
