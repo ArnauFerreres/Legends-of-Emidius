@@ -639,7 +639,7 @@ Transform:
   - {fileID: 5019650496937894879}
   - {fileID: 5019650496572576211}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &5019650496879571606
 CharacterController:
@@ -652,13 +652,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.8
+  m_Height: 1.69
   m_Radius: 0.3
   m_SlopeLimit: 50
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.93, z: 0}
+  m_Center: {x: 0, y: 0.94, z: 0}
 --- !u!114 &5019650496879571607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -676,6 +676,7 @@ MonoBehaviour:
   gravity: -15
   dashDuration: 0.6
   dashForce: 8
+  gameOverPanel: {fileID: 0}
   acceleration: 2.5
   deceleration: 5
   attackCollider: {fileID: 5019650497792031957}
@@ -697,9 +698,10 @@ MonoBehaviour:
   currentCharacterType: 0
   friendlyFire: 0
   hpBar: {fileID: 0}
-  maxHealth: 200
+  maxHealth: 400
   currentHealth: 0
   isBoss: 0
+  regenerate: 10
 --- !u!1 &5019650496895909513
 GameObject:
   m_ObjectHideFlags: 0
@@ -2115,7 +2117,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6f1a3abc3e476eb4f823f1ab4687b4ed, type: 2}
+  - {fileID: 2100000, guid: 6a1aa24b3a1119649993fb5aee44d302, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2309,7 +2311,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6f1a3abc3e476eb4f823f1ab4687b4ed, type: 2}
+  - {fileID: 2100000, guid: 6a1aa24b3a1119649993fb5aee44d302, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

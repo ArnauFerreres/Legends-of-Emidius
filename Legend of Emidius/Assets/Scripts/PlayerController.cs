@@ -24,13 +24,14 @@ public class PlayerController : MonoBehaviour
 
     private CharacterController controller;
 
-
     HealthController healthController;
 
     Vector3 verticalVelocity;
 
     [SerializeField] private float dashDuration = 0.6f;
     [SerializeField] private float dashForce = 8f;
+
+    public GameObject gameOverPanel;
 
     [Header("Animation Settings")]
     [SerializeField] private float acceleration = 2.5f;
@@ -42,6 +43,11 @@ public class PlayerController : MonoBehaviour
     int numberOfClicks = 0;
 
     [SerializeField] private SphereCollider attackCollider;
+
+    Vector3 initialPosition;
+    Quaternion initialRotation;
+
+    Coroutine dashCorotine;
 
     [Header("Stamina Settings")]
     [SerializeField] private float maxStamina = 100;
@@ -65,6 +71,11 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
 
         currentStamina = maxStamina;
+
+        gameOverPanel.SetActive(false);
+
+        initialPosition = transform.position;
+        initialRotation = transform.rotation;
     }
 
     void Update()
@@ -166,6 +177,7 @@ public class PlayerController : MonoBehaviour
 
         playerState = newState;
     }
+
     private void StateUpdate()
     {
         switch (playerState)
@@ -303,9 +315,12 @@ public class PlayerController : MonoBehaviour
     {
         controller.enabled = false;
     }
+
     private void DashLater()
     {
-        StartCoroutine(Dash());
+        //StartCoroutine(Dash());
+
+        dashCorotine = StartCoroutine(Dash());
     }
 
     IEnumerator Dash()
@@ -388,6 +403,22 @@ public class PlayerController : MonoBehaviour
         attackCollider.enabled = value;
     }
 
+    private void MoveCharacter(Vector3 position, Quaternion rotation)
+    {
+        if (dashCorotine!= null)
+        {
+            StopCoroutine(dashCorotine);
+        }
+
+        charControl.Move(Vector3.zero);
+
+        charControl.enabled  = false;
+        transform.position = position;
+        transform.rotation = rotation;
+        charControl.enabled = true;
+        ChangeState(MovementStates.Initial);
+    }
+
     private void OnEnable()
     {
         AnimationEventController.onAnimationEvent += CheckCombo;
@@ -401,6 +432,23 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<iTakeItem>() != null)
+        {
             other.GetComponent<iTakeItem>().TakeItem();
+        }
+
+        if (other.tag == "DeadZone")
+        {
+            MoveCharacter(initialPosition, initialRotation);
+        }
+        if (other.tag == "CheckPoint")
+        {
+            initialPosition = other.transform.GetChild(0).position;
+            initialRotation = other.transform.GetChild(0).rotation;
+        }
+    }
+
+    public void GameOverPanel()
+    {
+        gameOverPanel.SetActive(true);
     }
 }
