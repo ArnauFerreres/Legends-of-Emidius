@@ -26,7 +26,26 @@ public class SceneController : MonoBehaviour
     {
         SceneManager.LoadScene("FirstLevel");
     }
-
+    public void volume()
+    {
+        SceneManager.LoadScene("Volume");
+    }
+    public void credit()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+    public void Screen()
+    {
+        SceneManager.LoadScene("Screen");
+    }
+    public void Language()
+    {
+        SceneManager.LoadScene("Language");
+    }
+    public void Controles()
+    {
+        SceneManager.LoadScene("Controles");
+    }
     public void exit()
     {
         Application.Quit();
