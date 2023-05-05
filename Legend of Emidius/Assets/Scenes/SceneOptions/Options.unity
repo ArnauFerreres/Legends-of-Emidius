@@ -565,9 +565,9 @@ RectTransform:
   m_Children:
   - {fileID: 702667657}
   - {fileID: 1249742659}
+  - {fileID: 1042612826}
   - {fileID: 1210995347}
   - {fileID: 1537665217}
-  - {fileID: 1042612826}
   - {fileID: 1195732628}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -801,7 +801,7 @@ GameObject:
   - component: {fileID: 1042612828}
   - component: {fileID: 1042612827}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: scree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -871,7 +871,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1042612828}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1155521373}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: Screen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1042612828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -968,7 +980,7 @@ GameObject:
   - component: {fileID: 1195732630}
   - component: {fileID: 1195732629}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: cred
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1038,7 +1050,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1195732630}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1155521373}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: credit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1195732630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1090,7 +1114,7 @@ GameObject:
   - component: {fileID: 1210995349}
   - component: {fileID: 1210995348}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: lan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1161,9 +1185,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1155521373}
         m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: options
+        m_MethodName: Language
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1224,7 +1248,7 @@ GameObject:
   - component: {fileID: 1249742661}
   - component: {fileID: 1249742660}
   m_Layer: 5
-  m_Name: Button
+  m_Name: v
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1294,7 +1318,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1249742661}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1155521373}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: volume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1249742661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1440,7 +1476,7 @@ GameObject:
   - component: {fileID: 1537665219}
   - component: {fileID: 1537665218}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: con
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1511,9 +1547,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1155521373}
         m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: exit
+        m_MethodName: Controles
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
