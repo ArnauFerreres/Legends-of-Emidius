@@ -26,7 +26,8 @@ public class PlayerController : MonoBehaviour
 
 
     HealthController healthController;
-
+    public GameObject gameOverPanel;
+    
     Vector3 verticalVelocity;
 
     [SerializeField] private float dashDuration = 0.6f;
@@ -65,6 +66,8 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
 
         currentStamina = maxStamina;
+
+        gameOverPanel.SetActive(false);
     }
 
     void Update()
@@ -402,5 +405,11 @@ public class PlayerController : MonoBehaviour
     {
         if (other.GetComponent<iTakeItem>() != null)
             other.GetComponent<iTakeItem>().TakeItem();
+    }
+
+    public void GameOverPanel()
+    {
+        gameOverPanel.SetActive(true);
+        Time.timeScale = 0;
     }
 }
