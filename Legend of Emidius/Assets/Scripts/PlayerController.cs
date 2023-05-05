@@ -24,13 +24,14 @@ public class PlayerController : MonoBehaviour
 
     private CharacterController controller;
 
-
     HealthController healthController;
 
     Vector3 verticalVelocity;
 
     [SerializeField] private float dashDuration = 0.6f;
     [SerializeField] private float dashForce = 8f;
+
+    public GameObject gameOverPanel;
 
     [Header("Animation Settings")]
     [SerializeField] private float acceleration = 2.5f;
@@ -70,6 +71,8 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
 
         currentStamina = maxStamina;
+
+        gameOverPanel.SetActive(false);
 
         initialPosition = transform.position;
         initialRotation = transform.rotation;
@@ -174,6 +177,7 @@ public class PlayerController : MonoBehaviour
 
         playerState = newState;
     }
+
     private void StateUpdate()
     {
         switch (playerState)
@@ -311,6 +315,7 @@ public class PlayerController : MonoBehaviour
     {
         controller.enabled = false;
     }
+
     private void DashLater()
     {
         //StartCoroutine(Dash());
@@ -440,5 +445,10 @@ public class PlayerController : MonoBehaviour
             initialPosition = other.transform.GetChild(0).position;
             initialRotation = other.transform.GetChild(0).rotation;
         }
+    }
+
+    public void GameOverPanel()
+    {
+        gameOverPanel.SetActive(true);
     }
 }

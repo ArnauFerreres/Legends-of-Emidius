@@ -118,4 +118,12 @@ public class HealthController : MonoBehaviour
     {
         playerController.GameOverPanel();
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "DeadZone")
+        {
+            currentHealth -= 10;
+        }
+    }
 }
