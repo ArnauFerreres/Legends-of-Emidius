@@ -24,6 +24,8 @@ public class HealthController : MonoBehaviour
     CharacterController controller;
     EnemyBossManager enemyBossManager;
     public bool isBoss;
+    public int bossHealth;
+
 
     [Header("Regenerate Settings")]
     [SerializeField] private int regenerate = 10;
@@ -45,7 +47,7 @@ public class HealthController : MonoBehaviour
         }
         else
         {
-            currentHealth = 100;
+            currentHealth = bossHealth;
         }
         
         controller = GetComponent<CharacterController>();

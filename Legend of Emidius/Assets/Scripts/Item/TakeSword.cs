@@ -9,7 +9,7 @@ public class TakeSword : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        swordLargePlayer.SetActive(false);
+        
     }
 
     // Update is called once per frame

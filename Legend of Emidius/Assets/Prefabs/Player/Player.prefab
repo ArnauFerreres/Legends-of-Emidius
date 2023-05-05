@@ -723,7 +723,7 @@ Transform:
   - {fileID: 5019650496937894879}
   - {fileID: 5019650496572576211}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &5019650496879571606
 CharacterController:
@@ -798,8 +798,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef20b50ec41550a4a9895941fd68a47d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swordLargePlayer: {fileID: 3938352324490426034}
-  swordSmall: {fileID: 5289486942875324834}
+  swordLargePlayer: {fileID: 5289486942875324834}
+  swordSmall: {fileID: 0}
 --- !u!1 &5019650496895909513
 GameObject:
   m_ObjectHideFlags: 0
@@ -4601,7 +4601,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4765891377879239448
 Transform:
   m_ObjectHideFlags: 0
@@ -4873,6 +4873,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4e3ae27f0a8df4b43a605d3c4993d143, type: 3}
       propertyPath: m_Name
       value: _sword_18
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4e3ae27f0a8df4b43a605d3c4993d143, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
