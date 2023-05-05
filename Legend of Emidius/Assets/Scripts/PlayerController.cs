@@ -43,6 +43,11 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private SphereCollider attackCollider;
 
+    Vector3 initialPosition;
+    Quaternion initialRotation;
+
+    Coroutine dashCorotine;
+
     [Header("Stamina Settings")]
     [SerializeField] private float maxStamina = 100;
     float currentStamina;
@@ -65,6 +70,9 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
 
         currentStamina = maxStamina;
+
+        initialPosition = transform.position;
+        initialRotation = transform.rotation;
     }
 
     void Update()
@@ -305,7 +313,9 @@ public class PlayerController : MonoBehaviour
     }
     private void DashLater()
     {
-        StartCoroutine(Dash());
+        //StartCoroutine(Dash());
+
+        dashCorotine = StartCoroutine(Dash());
     }
 
     IEnumerator Dash()
@@ -388,6 +398,22 @@ public class PlayerController : MonoBehaviour
         attackCollider.enabled = value;
     }
 
+    private void MoveCharacter(Vector3 position, Quaternion rotation)
+    {
+        if (dashCorotine!= null)
+        {
+            StopCoroutine(dashCorotine);
+        }
+
+        charControl.Move(Vector3.zero);
+
+        charControl.enabled  = false;
+        transform.position = position;
+        transform.rotation = rotation;
+        charControl.enabled = true;
+        ChangeState(MovementStates.Initial);
+    }
+
     private void OnEnable()
     {
         AnimationEventController.onAnimationEvent += CheckCombo;
@@ -401,6 +427,18 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<iTakeItem>() != null)
+        {
             other.GetComponent<iTakeItem>().TakeItem();
+        }
+
+        if (other.tag == "DeadZone")
+        {
+            MoveCharacter(initialPosition, initialRotation);
+        }
+        if (other.tag == "CheckPoint")
+        {
+            initialPosition = other.transform.GetChild(0).position;
+            initialRotation = other.transform.GetChild(0).rotation;
+        }
     }
 }
