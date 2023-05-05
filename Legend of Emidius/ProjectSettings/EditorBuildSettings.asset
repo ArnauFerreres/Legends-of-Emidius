@@ -16,7 +16,7 @@ EditorBuildSettings:
     guid: 36b141ee56854e84380c88869c114611
   - enabled: 1
     path: Assets/Scenes/SceneOptions/Screen.unity
-    guid: 3ba1283b9dc9c224b8143bc66191a7c9
+    guid: 2ebd2574f6e007947ab40b099b9205b5
   - enabled: 1
     path: Assets/Scenes/SceneOptions/Language.unity
     guid: 36c1b0aaf2f288648b7ce11481f4862e
