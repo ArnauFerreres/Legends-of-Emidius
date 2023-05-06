@@ -404,7 +404,7 @@ public class PlayerController : MonoBehaviour
         attackCollider.enabled = value;
     }
 
-    private void MoveCharacter(Vector3 position, Quaternion rotation)
+    public void MoveCharacter(Vector3 position, Quaternion rotation)
     {
         if (dashCorotine!= null)
         {

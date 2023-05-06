@@ -92,6 +92,9 @@ public class HealthController : MonoBehaviour
                 animator.SetBool("dead", true);
 
                 Invoke("ActivarPanelGO", 1.6f);
+
+                //Haecr que cuando mueras te lleve a los check points despues de activar el panel
+
                 return;
             }
 
