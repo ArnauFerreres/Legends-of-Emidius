@@ -96,6 +96,9 @@ public class PlayerController : MonoBehaviour
         {
             transform.rotation = Quaternion.identity;
             controller.enabled= false;
+
+            //Sale el aviso por esta corrutina
+            StartCoroutine(MovePostDead());
         }
 
 #if UNITY_EDITOR
@@ -418,6 +421,13 @@ public class PlayerController : MonoBehaviour
         transform.rotation = rotation;
         charControl.enabled = true;
         ChangeState(MovementStates.Initial);
+    }
+
+    IEnumerator MovePostDead()
+    {
+        yield return new WaitForSeconds(1.6f);
+
+        MoveCharacter(initialPosition, initialRotation);
     }
 
     private void OnEnable()
