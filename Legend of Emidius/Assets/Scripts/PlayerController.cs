@@ -430,16 +430,11 @@ public class PlayerController : MonoBehaviour
         MoveCharacter(initialPosition, initialRotation);
     }
 
-    private void OnEnable()
+    public void GameOverPanel()
     {
-        AnimationEventController.onAnimationEvent += CheckCombo;
+        gameOverPanel.SetActive(true);
     }
 
-    private void OnDisable()
-    {
-        AnimationEventController.onAnimationEvent -= CheckCombo;
-
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<iTakeItem>() != null)
@@ -458,8 +453,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void GameOverPanel()
+    private void OnEnable()
     {
-        gameOverPanel.SetActive(true);
+        AnimationEventController.onAnimationEvent += CheckCombo;
+    }
+
+    private void OnDisable()
+    {
+        AnimationEventController.onAnimationEvent -= CheckCombo;
+
     }
 }
