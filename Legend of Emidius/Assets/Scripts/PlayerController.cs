@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
     {
         playerState = MovementStates.Initial;
 
+
         ChangeState(playerState);
         charControl = GetComponent<CharacterController>();
 

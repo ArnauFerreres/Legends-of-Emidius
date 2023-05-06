@@ -118,6 +118,7 @@ public class HealthController : MonoBehaviour
 
     void ActivarPanelGO()
     {
+        Cursor.lockState = CursorLockMode.None;
         playerController.GameOverPanel();
     }
 
