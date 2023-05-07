@@ -16,7 +16,7 @@ public class UIController : MonoBehaviour
 
     [SerializeField] private GameObject settingsPanel;
 
-  
+    //public GameObject optionsPanel;
     private bool isPaused;
     public void UpdateTotalCoins()
     {
@@ -31,7 +31,7 @@ public class UIController : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         settingsPanel.SetActive(false);
-        
+        //optionsPanel.SetActive(false);
     }
     private void Update()
     {
@@ -80,5 +80,8 @@ public class UIController : MonoBehaviour
 
     }
 
-
+    public void Options()
+    {
+        //optionsPanel.SetActive(true);
+    }
 }
