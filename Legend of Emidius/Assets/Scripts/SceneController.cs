@@ -46,6 +46,10 @@ public class SceneController : MonoBehaviour
     {
         SceneManager.LoadScene("Controles");
     }
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
     public void exit()
     {
         Application.Quit();
