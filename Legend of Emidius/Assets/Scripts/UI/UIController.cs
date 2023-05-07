@@ -16,8 +16,13 @@ public class UIController : MonoBehaviour
 
     [SerializeField] private GameObject settingsPanel;
 
+<<<<<<< HEAD
     //public GameObject optionsPanel;
     private bool isPaused;
+=======
+  
+    private bool isPaused = false;
+>>>>>>> 244e23bb9b9e0377e7e1f40464d6eea23181d47e
     public void UpdateTotalCoins()
     {
         totalCoins++;
@@ -45,7 +50,7 @@ public class UIController : MonoBehaviour
         {
             Time.timeScale = 1;
             isPaused = false;
-            ClosePanel(settingsPanel);
+            ClosePausePanel(settingsPanel);
         }
     }
 
@@ -55,13 +60,20 @@ public class UIController : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
-    public void ClosePanel(GameObject panel)
+    public void ClosePausePanel(GameObject panel)
     {
         Time.timeScale = 1.0f;
         isPaused = false;
         settingsPanel.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
     }
+
+    public void ClosePanel(GameObject panel)
+    {
+        panel.SetActive(false);
+        Cursor.lockState = CursorLockMode.None;
+    }
+
 
     public void Quit()
     {
