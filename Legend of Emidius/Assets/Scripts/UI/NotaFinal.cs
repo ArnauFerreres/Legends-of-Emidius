@@ -23,6 +23,7 @@ public class NotaFinal : MonoBehaviour
         if (other.tag == "Player")
         {
             notaFinal.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0f;
         }
     }

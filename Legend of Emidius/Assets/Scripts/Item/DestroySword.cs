@@ -1,9 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DestroySword : MonoBehaviour
 {
+    
+    public AudioClip armor;
+    public GameObject armadura;
+
+
+    private void Awake()
+    {
+        GetComponent<AudioSource>().clip = armor;
+        
+        //bossName = GetComponentInChildren<TextMeshProUGUI>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +30,20 @@ public class DestroySword : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-            Destroy(gameObject);
+            SphereCollider sphereCollider = GetComponent<SphereCollider>();
+            GetComponent<AudioSource>().Play();
+            sphereCollider.enabled = false;
+            //AudioSource.PlayClipAtPoint(armor, gameObject.transform.position);
+            Destroy(armadura);
         }
     }
+
+    //public void DestroyArmor()
+    //{
+    //    Destroy(gameObject);
+    //}
+
+
 }
