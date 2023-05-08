@@ -12,6 +12,8 @@ namespace SG
         public Slider slider;
         public AudioClip bossMusic;
 
+        public GameObject MainMusic;
+
         private void Awake()
         {
             slider = GetComponentInChildren<Slider>();
@@ -53,12 +55,22 @@ namespace SG
             slider.value = currentHealth;
         }
         public void SetMusicBossToActive()
-        {
+        {   
             GetComponent<AudioSource>().Play();
+            GameObject[] objects = GameObject.FindGameObjectsWithTag("music");
+            foreach (GameObject obj in objects)
+            {
+                obj.SetActive(false);
+            }
         }
         public void SetMusicBossToInactive()
         {
             GetComponent<AudioSource>().Stop();
+        }
+
+        public void ActiveMainMusic()
+        {
+            MainMusic.SetActive(true);
         }
     }
 }

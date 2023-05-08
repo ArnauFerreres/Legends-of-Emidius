@@ -53,6 +53,7 @@ namespace SG
             }
             //bossHealthBarFade.FadeOut();
             bossHealtBar.SetMusicBossToInactive();
+            bossHealtBar.ActiveMainMusic();
             Invoke("HPBoss", 3f);
         }
 
