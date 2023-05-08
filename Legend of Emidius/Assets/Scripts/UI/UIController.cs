@@ -17,7 +17,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject settingsPanel;
 
     public GameObject optionsPanel;
-    private bool isPaused;
+    public bool isPaused { get; set; }
     public void UpdateTotalCoins()
     {
         totalCoins++;

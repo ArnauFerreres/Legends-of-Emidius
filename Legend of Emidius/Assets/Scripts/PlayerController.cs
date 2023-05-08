@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float gravity = -15f;
 
+
+
+    UIController pause;
     CharacterController charControl;
     Vector3 moveDirection;
     Vector3 moveDir;
@@ -60,6 +63,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerState = MovementStates.Initial;
+
+        pause = GameObject.FindGameObjectWithTag("UIController").GetComponent<UIController>();
 
 
         ChangeState(playerState);
@@ -205,7 +210,7 @@ public class PlayerController : MonoBehaviour
                         currentStamina -= 10;
                         ChangeState(MovementStates.Dash);
                     }
-                    if (Input.GetButtonDown("Fire1"))
+                    if (Input.GetButtonDown("Fire1") && !pause.isPaused)
                     {
                         ChangeState(MovementStates.Attack);
                     }
@@ -250,7 +255,7 @@ public class PlayerController : MonoBehaviour
             case MovementStates.Attack:
                 if (currentStamina > 0)
                 {
-                    if (Input.GetButtonDown("Fire1"))
+                    if (Input.GetButtonDown("Fire1") && ! pause.isPaused)
                     {
                         OnClickAttack();
                     }
