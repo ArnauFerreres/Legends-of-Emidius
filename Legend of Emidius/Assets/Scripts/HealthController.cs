@@ -100,6 +100,7 @@ public class HealthController : MonoBehaviour
 
             if (currentCharacterType == characterType.Enemy01)
             {
+                onEnemyDead?.Invoke(gameObject);
                 Destroy(gameObject);
             }
 
