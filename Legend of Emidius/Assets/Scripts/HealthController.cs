@@ -25,7 +25,7 @@ public class HealthController : MonoBehaviour
     EnemyBossManager enemyBossManager;
     public bool isBoss;
     public int bossHealth;
-
+    public GameObject particulasMuerte;
 
     [Header("Regenerate Settings")]
     [SerializeField] private int regenerate = 10;
@@ -102,6 +102,8 @@ public class HealthController : MonoBehaviour
             {
                 onEnemyDead?.Invoke(gameObject);
                 Destroy(gameObject);
+                Instantiate(particulasMuerte, transform.position, transform.rotation);
+                
             }
 
         }
