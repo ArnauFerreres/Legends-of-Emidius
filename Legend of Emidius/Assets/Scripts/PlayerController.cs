@@ -17,12 +17,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float gravity = -15f;
 
-
-    public AudioClip deathPlayer;
-
-    private AudioSource audioSource;
-
-
     UIController pause;
     CharacterController charControl;
     Vector3 moveDirection;
@@ -39,6 +33,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashForce = 8f;
 
     public GameObject gameOverPanel;
+
+    [Header("Audio Settings")]
+
+    public AudioClip deathPlayer;
+    public AudioClip dashPlayerAudio;
+
+    private AudioSource audioSource;
 
     [Header("Animation Settings")]
     [SerializeField] private float acceleration = 2.5f;
@@ -92,6 +93,7 @@ public class PlayerController : MonoBehaviour
         audioSource = gameObject.AddComponent<AudioSource>();
         // Asignamos el AudioClip al objeto AudioSource
         audioSource.clip = deathPlayer;
+        audioSource.clip = dashPlayerAudio;
     }
 
     void Update()
@@ -347,6 +349,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Dash()
     {
+        audioSource.PlayOneShot(dashPlayerAudio);
         float startTime = Time.time;
         moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         float targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
