@@ -18,6 +18,8 @@ public class UIController : MonoBehaviour
 
     public GameObject optionsPanel;
     public bool isPaused { get; set; }
+
+    
     public void UpdateTotalCoins()
     {
         totalCoins++;
@@ -68,7 +70,14 @@ public class UIController : MonoBehaviour
         panel.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
     }
-
+    public void CloseNote(GameObject panel)
+    {
+        Time.timeScale = 1.0f;
+        isPaused = false;
+        
+        panel.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+    }
     public void Quit()
     {
         Application.Quit();
@@ -90,4 +99,6 @@ public class UIController : MonoBehaviour
     {
         optionsPanel.SetActive(true);
     }
+
+
 }
