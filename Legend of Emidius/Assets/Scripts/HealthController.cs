@@ -31,7 +31,7 @@ public class HealthController : MonoBehaviour
     private float alturaOffset = 1.0f;
 
     [Header("Regenerate Settings")]
-    [SerializeField] private int regenerate = 10;
+    [SerializeField] private int regenerate = 40;
     public static Action<GameObject> onEnemyDead;
 
 
