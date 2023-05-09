@@ -9,7 +9,7 @@ namespace SG
         public List<FogWall> fogWalls;
         public UIBossHealtBar bossHealtBar;
         public EnemyBossManager boss;
-
+        public SphereCollider notaCollider;
 
         //public TextFade bossHealthBarFade;
 
@@ -24,6 +24,7 @@ namespace SG
         private void Awake()
         {
             bossHealtBar = FindObjectOfType<UIBossHealtBar>();
+            notaCollider.GetComponent<SphereCollider>().enabled = false;
         }
         public void Update()
         {
@@ -51,9 +52,9 @@ namespace SG
             {
                 fogWall.DeactivateFogWall();
             }
-            //bossHealthBarFade.FadeOut();
             bossHealtBar.SetMusicBossToInactive();
             bossHealtBar.ActiveMainMusic();
+            notaCollider.enabled = true;
             Invoke("HPBoss", 3f);
         }
 

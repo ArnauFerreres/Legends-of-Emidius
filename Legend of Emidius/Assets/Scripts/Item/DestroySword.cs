@@ -9,7 +9,6 @@ public class DestroySword : MonoBehaviour
     public AudioClip armor;
     public GameObject armadura;
 
-
     private void Awake()
     {
         GetComponent<AudioSource>().clip = armor;
@@ -35,7 +34,6 @@ public class DestroySword : MonoBehaviour
             SphereCollider sphereCollider = GetComponent<SphereCollider>();
             GetComponent<AudioSource>().Play();
             sphereCollider.enabled = false;
-            //AudioSource.PlayClipAtPoint(armor, gameObject.transform.position);
             Destroy(armadura);
         }
     }

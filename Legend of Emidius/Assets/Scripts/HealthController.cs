@@ -1,4 +1,5 @@
 using SG;
+using Suntail;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -25,7 +26,9 @@ public class HealthController : MonoBehaviour
     EnemyBossManager enemyBossManager;
     public bool isBoss;
     public int bossHealth;
-    public GameObject particulasMuerte;
+    public ParticleSystem particulasMuerte;
+
+    private float alturaOffset = 1.0f;
 
     [Header("Regenerate Settings")]
     [SerializeField] private int regenerate = 10;
@@ -88,6 +91,7 @@ public class HealthController : MonoBehaviour
             {
                
                 controller.enabled = false;
+                playerController.Dead();
                 controller.transform.rotation= Quaternion.identity;
                 animator.SetBool("dead", true);
 
@@ -100,9 +104,14 @@ public class HealthController : MonoBehaviour
 
             if (currentCharacterType == characterType.Enemy01)
             {
+                //Vector3 posicionParticula = particulasMuerte.transform.position;
+                //posicionParticula.y += alturaOffset;
+
                 onEnemyDead?.Invoke(gameObject);
                 Destroy(gameObject);
                 Instantiate(particulasMuerte, transform.position, transform.rotation);
+
+                //ParticleSystem particulaInstanciada = Instantiate(particulasMuerte, posicionParticula, Quaternion.identity);
                 
             }
 

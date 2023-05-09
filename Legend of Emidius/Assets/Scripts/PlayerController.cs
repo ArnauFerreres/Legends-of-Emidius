@@ -18,6 +18,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float gravity = -15f;
 
 
+    public AudioClip deathPlayer;
+
+    private AudioSource audioSource;
+
 
     UIController pause;
     CharacterController charControl;
@@ -82,6 +86,12 @@ public class PlayerController : MonoBehaviour
 
         initialPosition = transform.position;
         initialRotation = transform.rotation;
+
+
+
+        audioSource = gameObject.AddComponent<AudioSource>();
+        // Asignamos el AudioClip al objeto AudioSource
+        audioSource.clip = deathPlayer;
     }
 
     void Update()
@@ -322,7 +332,10 @@ public class PlayerController : MonoBehaviour
 
     public void Dead()
     {
+        audioSource.PlayOneShot(deathPlayer);
         controller.enabled = false;
+        
+
     }
 
     private void DashLater()
