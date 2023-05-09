@@ -61,6 +61,7 @@ public class EnemyController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
         anim = GetComponentInChildren<Animator>();
+
     }
 
     void Update()
