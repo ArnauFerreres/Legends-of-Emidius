@@ -70,6 +70,21 @@ MonoBehaviour:
     m_Localized: Continuar
     m_Metadata:
       m_Items: []
+  - m_Id: 1465245393637376
+    m_Localized: 'Te escribo esta nota para decirte que ya es demasiado tarde para
+      mi. Pero no para ti EmIDIUS, tengo que contarte algo, el antiguo rey sigue
+      vivo el cual vivia con su mujer y su unico hijo, que iba a heredar el trono.
+      Su hermano con ansias de poder, usurpo el trono y mando a matarlo tanto a el
+      como a su mujer.
+
+      Ese heredero del rey eres TU.
+
+      
+
+      LORD
+      EMIDIUS DE OSAEGON.'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -70,6 +70,15 @@ MonoBehaviour:
     m_Localized: Continuar
     m_Metadata:
       m_Items: []
+  - m_Id: 1465245393637376
+    m_Localized: "\rT'escric aquesta nota per dir-te que ja es massa tard per a mi.
+      Pero no per a tu EmIDIUS, haig d'explicar-te alguna cosa, l'antic rei continua
+      viu el qual vivia amb la seva dona i el seu unic fill, que anava a heretar
+      el tron. El seu germa amb ansies de poder va usuarpar el tron i manar a matar-lo
+      tant a ell com a la seva dona.\r\nAquest hereu del rei ets TU.\r\n\r\nLORD
+      EMIDIUS DE OSAEGON."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

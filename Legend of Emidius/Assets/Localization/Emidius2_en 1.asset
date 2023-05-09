@@ -70,6 +70,15 @@ MonoBehaviour:
     m_Localized: Resume
     m_Metadata:
       m_Items: []
+  - m_Id: 1465245393637376
+    m_Localized: "\rI am writing you this note to tell you that it is already too
+      late for me. But not for you EmIDIUS, I have to tell you something, the old
+      king is still alive, who lived with his wife and his only son, who was going
+      to inherit the throne. His brother, lusting for power, usurped the throne and
+      ordered him and his wife to be killed.\r\nThat heir to the king is You.\r\n\r\nLORD
+      EMIDIUS OF OSAEGON."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -70,6 +70,14 @@ MonoBehaviour:
     m_Localized: continua
     m_Metadata:
       m_Items: []
+  - m_Id: 1465245393637376
+    m_Localized: "Ti scrivo questa nota per dirti che per me \xE8 gi\xE0 troppo tardi.
+      Ma non per te EMIDIUS, devo dirti una cosa, il vecchio re \xE8 ancora vivo,
+      che viveva con sua moglie e il suo unico figlio, che avrebbe ereditato il trono.
+      Suo fratello, assetato di potere, usurp\xF2 il trono e ordin\xF2 di uccidere
+      lui e sua moglie.\r\nQuell'erede del re sei tu.\r\n\r\nSIGNORE EMIDIUS DI OSAEGON."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
