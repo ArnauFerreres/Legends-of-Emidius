@@ -85,6 +85,12 @@ MonoBehaviour:
       everything.
     m_Metadata:
       m_Items: []
+  - m_Id: 1547194686656512
+    m_Localized: In case someone finds this note, let them know that the new king
+      has kicked us out of our house, he is a tyrant and wants to kill us all, may
+      God have us in his grace.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -91,6 +91,12 @@ MonoBehaviour:
       todo.
     m_Metadata:
       m_Items: []
+  - m_Id: 1547194686656512
+    m_Localized: Por si alguien encuentra esta nota que sepa que el nuevo rey nos
+      ha echado de nuestra casa, es un tirano y quiere acabar con todos nosotros,
+      que dios nos tenga en su gracia.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

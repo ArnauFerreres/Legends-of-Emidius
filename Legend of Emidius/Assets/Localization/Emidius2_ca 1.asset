@@ -84,6 +84,12 @@ MonoBehaviour:
       a la fortalesa dels nans al sud del bosc, alla ho entendras tot.
     m_Metadata:
       m_Items: []
+  - m_Id: 1547194686656512
+    m_Localized: Per si algu troba aquesta nota que sapiga que el nou rei ens ha
+      fet fora de casa nostra, es un tira i vol acabar amb tots nosaltres, que deu
+      ens tingui en la seva gracia.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

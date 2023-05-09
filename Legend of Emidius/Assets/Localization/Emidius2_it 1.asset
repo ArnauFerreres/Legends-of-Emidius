@@ -83,6 +83,12 @@ MonoBehaviour:
       e di andare alla fortezza dei nani a sud della foresta, l\xEC capirai tutto."
     m_Metadata:
       m_Items: []
+  - m_Id: 1547194686656512
+    m_Localized: Nel caso qualcuno trovi questo biglietto, fagli sapere che il nuovo
+      re ci ha cacciato di casa, e un tiranno e vuole ucciderci tutti, che Dio ci
+      abbia in sua grazia.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
