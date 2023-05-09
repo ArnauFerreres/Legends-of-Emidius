@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class EnemyDeadSound : MonoBehaviour
 {
-
+    public CapsuleCollider capsulleCollider;
     public AudioClip deathEnemigos;
-    public Rigidbody rigidbodyEnemies;
     private AudioSource audioSource;
+    private bool isSoundPlayed = false;
     // Start is called before the first frame update
     void Start()
     {
-        rigidbodyEnemies = GetComponent<Rigidbody>();
-        audioSource = gameObject.AddComponent<AudioSource>();
+        capsulleCollider = GetComponentInChildren<CapsuleCollider>();
+        audioSource = gameObject.GetComponent<AudioSource>();
         // Asignamos el AudioClip al objeto AudioSource
         audioSource.clip = deathEnemigos;
     }
@@ -20,13 +20,16 @@ public class EnemyDeadSound : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(rigidbodyEnemies != null)
+        if(capsulleCollider == null && !isSoundPlayed)
         {
             DeathSound();
+
         }
     }
     public void DeathSound()
     {
         audioSource.PlayOneShot(deathEnemigos);
+        isSoundPlayed = true;
+
     }
 }
