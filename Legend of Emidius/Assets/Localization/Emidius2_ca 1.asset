@@ -79,6 +79,11 @@ MonoBehaviour:
       EMIDIUS DE OSAEGON."
     m_Metadata:
       m_Items: []
+  - m_Id: 1535450274746368
+    m_Localized: No et puc dir qui soc per ara, l'unic que et puc dir es que vagis
+      a la fortalesa dels nans al sud del bosc, alla ho entendras tot.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -79,6 +79,12 @@ MonoBehaviour:
       EMIDIUS OF OSAEGON."
     m_Metadata:
       m_Items: []
+  - m_Id: 1535450274746368
+    m_Localized: I can't tell you who I am for now, the only thing I can tell you
+      is to go to the dwarf fortress to the south of the forest, there you will understand
+      everything.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

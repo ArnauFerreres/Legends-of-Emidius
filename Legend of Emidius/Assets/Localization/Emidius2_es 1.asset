@@ -79,10 +79,16 @@ MonoBehaviour:
 
       Ese heredero del rey eres TU.
 
-      
 
-      LORD
-      EMIDIUS DE OSAEGON.'
+
+      LORD EMIDIUS
+      DE OSAEGON.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1535450274746368
+    m_Localized: No te puedo decir quien soy por ahora, lo unico que te puedo decir
+      es que vayas a la fortaleza de los enanos al sur del bosque, alli lo entenderas
+      todo.
     m_Metadata:
       m_Items: []
   references:

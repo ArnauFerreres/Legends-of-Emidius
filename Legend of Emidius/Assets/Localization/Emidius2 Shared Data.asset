@@ -71,6 +71,10 @@ MonoBehaviour:
     m_Key: Historia
     m_Metadata:
       m_Items: []
+  - m_Id: 1535450274746368
+    m_Key: "\rNotaExterior"
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
