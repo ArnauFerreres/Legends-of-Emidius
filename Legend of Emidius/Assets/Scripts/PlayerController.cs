@@ -415,6 +415,7 @@ public class PlayerController : MonoBehaviour
             ChangeState(MovementStates.OnGround);
         }
     }
+
     private void RegenerateStamina()
     {
         currentStamina += staminaReg * Time.deltaTime;
