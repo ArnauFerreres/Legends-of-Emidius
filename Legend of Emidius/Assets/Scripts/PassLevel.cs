@@ -14,6 +14,7 @@ public class PassLevel : MonoBehaviour
     public Image sliderFront;
     public Image PanelLoading;
     public float currentPercent;
+    public int CargarNivel;
 
     private void Start()
     {
@@ -53,6 +54,7 @@ public class PassLevel : MonoBehaviour
             sliderFront.enabled = true;
             textProgress.enabled = true;
 
+            PlayerPrefs.SetInt("nivelX", CargarNivel);
             StartCoroutine(LoadScene(passLevel));
             //SceneManager.LoadScene(passLevel);
         }
