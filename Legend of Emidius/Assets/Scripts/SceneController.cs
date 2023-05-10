@@ -24,6 +24,7 @@ public class SceneController : MonoBehaviour
     }
     public void newgame()
     {
+        PlayerPrefs.SetInt("nivelX", 1);
         SceneManager.LoadScene("FirstLevel");
     }
     public void volume()
